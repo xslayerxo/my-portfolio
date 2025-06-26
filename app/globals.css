@@ -155,3 +155,58 @@ a:focus {
 .writing-mode-vertical {
   writing-mode: vertical-lr;
 }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Optimize text rendering on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Reduce motion for better performance on mobile */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .slide-in-left,
+    .slide-in-right {
+      transition: none;
+    }
+    
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .slide-in-left,
+    .slide-in-right {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Improve scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better focus states for mobile */
+  button:focus,
+  a:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Optimize for tablet touch targets */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}
